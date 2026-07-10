@@ -1,0 +1,58 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: black;
+  color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container.signup-container {
+  background-color: #111;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px yellow;
+  width: 300px;
+  text-align: center;
+}
+
+
+.input-group {
+  margin: 15px 0;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid yellow;
+  border-radius: 5px;
+  background-color: black;
+  color: yellow;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: yellow;
+  color: black;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #ffc107;
+}
+
+a {
+  color: yellow;
+}
