@@ -23,7 +23,8 @@ function calculateAge(dob) {
 
 function displayStudents(list = students) {
   table.innerHTML = "";
-  list.forEach((student, index) => {
+  list.forEach((student) => {
+    const studentIndex = students.indexOf(student);
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${student.id}</td>
@@ -40,9 +41,9 @@ function displayStudents(list = students) {
       <td>${student.address}</td>
       <td>${student.photo ? `<img src="${student.photo}" class="student-thumbnail" alt="${student.name}'s photo">` : '<span class="no-photo">-</span>'}</td>
       <td>
-        <button onclick="editStudent(${index})" class="btn">Edit</button>
-        <button onclick="deleteStudent(${index})" class="btn">Delete</button>
-        <button onclick="viewStudent(${index})" class="btn">View</button>        
+        <button onclick="editStudent(${studentIndex})" class="btn">Edit</button>
+        <button onclick="deleteStudent(${studentIndex})" class="btn">Delete</button>
+        <button onclick="viewStudent(${studentIndex})" class="btn">View</button>
   
       </td>`;
     table.appendChild(tr);
@@ -102,13 +103,26 @@ form.addEventListener("submit", (e) => {
 
 function editStudent(index) {
   const s = students[index];
-  for (let key in s) {
-    if (key !== "photo" && document.getElementById(key)) document.getElementById(key).value = s[key];
-  }
+  if (!s) return;
+
+  document.getElementById("studentId").value = s.id || "";
+  document.getElementById("name").value = s.name || "";
+  document.getElementById("class").value = s.class || "";
+  document.getElementById("section").value = s.section || "";
+  document.getElementById("roll").value = s.roll || "";
+  document.getElementById("dob").value = s.dob || "";
+  document.getElementById("phone").value = s.phone || "";
+  document.getElementById("blood").value = s.blood || "";
+  document.getElementById("father").value = s.father || "";
+  document.getElementById("mother").value = s.mother || "";
+  document.getElementById("address").value = s.address || "";
   selectedPhotoData = s.photo || "";
   if (selectedPhotoData) {
     photoPreview.src = selectedPhotoData;
     photoPreview.hidden = false;
+  } else {
+    photoPreview.src = "";
+    photoPreview.hidden = true;
   }
 }
 
