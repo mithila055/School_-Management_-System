@@ -1,112 +1,165 @@
+:root {
+  --ink: #26332f;
+  --muted: #71807a;
+  --paper: #f5f4ee;
+  --panel: #fffdf8;
+  --line: #dce3dc;
+  --accent: #3f7568;
+  --accent-dark: #2d5b51;
+  --accent-soft: #e4f0ea;
+}
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
 }
 
 body {
-  background-color: #000;
-  color: #fdd835;
+  align-items: center;
+  background: var(--paper);
+  color: var(--ink);
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  margin: 0;
+  min-height: 100vh;
+  padding: 1.25rem;
 }
 
 .login-container {
-  background-color: #111;
-  padding: 3rem 2rem;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(255, 255, 0, 0.4);
-  width: 350px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(49, 68, 59, 0.08);
+  max-width: 390px;
+  padding: 2.25rem;
   text-align: center;
+  width: 100%;
+}
+
+.signup-container {
+  max-width: 430px;
+}
+
+.auth-brand {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.brand-mark {
+  align-items: center;
+  background: var(--accent);
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  font-size: 1.25rem;
+  font-weight: 700;
+  height: 2.8rem;
+  justify-content: center;
+  width: 2.8rem;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
 }
 
 .login-container h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  color: #ffeb3b;
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  margin: 0 0 0.5rem;
 }
 
-.login-container p {
+.auth-intro {
+  color: var(--muted);
   font-size: 0.9rem;
-  color: #d4d4d4;
-  margin-bottom: 2rem;
+  margin: 0 0 1.75rem;
 }
 
 .input-group {
+  margin-bottom: 1rem;
   text-align: left;
-  margin-bottom: 1.5rem;
 }
 
 .input-group label {
+  color: var(--accent-dark);
   display: block;
-  font-weight: 500;
-  color: #fdd835;
+  font-size: 0.85rem;
+  font-weight: 700;
   margin-bottom: 0.4rem;
 }
 
 .input-group input {
-  width: 100%;
-  padding: 0.6rem;
-  border: 2px solid #fdd835;
-  border-radius: 8px;
-  background: #000;
-  color: #fff;
+  background: #fbfcf8;
+  border: 1px solid #cbd7cf;
+  border-radius: 7px;
+  color: var(--ink);
   font-size: 1rem;
+  min-height: 2.7rem;
   outline: none;
-  transition: border-color 0.3s;
+  padding: 0.65rem 0.75rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+  width: 100%;
 }
 
 .input-group input:focus {
-  border-color: #ffeb3b;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.input-group input::placeholder {
+  color: #9aa8a1;
 }
 
 .btn {
-  width: 100%;
-  padding: 0.7rem;
-  background-color: #fdd835;
-  color: #000;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 7px;
+  color: white;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 700;
+  min-height: 2.7rem;
+  padding: 0.65rem 1rem;
+  transition: background 160ms ease, transform 160ms ease;
+  width: 100%;
 }
 
 .btn:hover {
-  background-color: #ffeb3b;
-  box-shadow: 0 0 10px #ffeb3b;
+  background: var(--accent-dark);
+  transform: translateY(-1px);
 }
 
 .signup-text {
-  margin-top: 1.5rem;
-  color: #ccc;
+  color: var(--muted);
   font-size: 0.9rem;
+  margin: 1.25rem 0 0;
 }
 
 .signup-text a {
-  color: #fdd835;
+  color: var(--accent-dark);
+  font-weight: 700;
   text-decoration: none;
-  font-weight: 600;
 }
 
 .signup-text a:hover {
   text-decoration: underline;
 }
 
-/* Feedback message */
 #message {
-  margin-top: 1rem;
-  font-weight: 600;
-  color: #ffeb3b;
+  color: var(--accent-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 1rem 0 0;
 }
 
-/* Responsive */
 @media (max-width: 400px) {
   .login-container {
-    width: 90%;
-    padding: 2rem 1.5rem;
+    padding: 1.75rem 1.25rem;
   }
 }

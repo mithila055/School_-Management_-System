@@ -7,12 +7,37 @@
   <link rel="stylesheet" href="student-profile.css">
 </head>
 <body>
-  <div class="profile-container">
-    <h1>🎓 Student Profile</h1>
-    <div id="profile-details"></div>
-    <button id="printBtn" class="btn">🖨️ Print Profile</button>
-    <button onclick="window.location.href='dashboard.html'" class="btn back-btn">⬅ Back to Dashboard</button>
-  </div>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <div>
+        <p class="eyebrow">Administration portal</p>
+        <h1>Student Profile</h1>
+      </div>
+    </div>
+    <p class="today-label">Student records</p>
+  </header>
+
+  <main class="profile-shell">
+    <section class="profile-container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Directory record</p>
+          <h2>Student details</h2>
+        </div>
+        <span class="profile-badge" aria-hidden="true">ID</span>
+      </div>
+      <div class="profile-photo-frame">
+        <img id="profilePhoto" alt="Student passport photo" hidden />
+        <span id="profilePhotoPlaceholder">No photo</span>
+      </div>
+      <div id="profile-details"></div>
+      <div class="profile-actions">
+        <button id="printBtn" class="btn primary-action">Print Profile</button>
+        <button onclick="window.location.href='dashboard.html'" class="btn back-btn">Back to Dashboard</button>
+      </div>
+    </section>
+  </main>
 
   <script src="student-profile.js"></script>
 </body>

@@ -3,9 +3,12 @@ const table = document.getElementById("studentTable");
 const searchInput = document.getElementById("searchInput");
 const classFilter = document.getElementById("classFilter");
 const sectionFilter = document.getElementById("sectionFilter");
+const photoInput = document.getElementById("photo");
+const photoPreview = document.getElementById("photoPreview");
 
 
 let students = JSON.parse(localStorage.getItem("students")) || [];
+let selectedPhotoData = "";
 
 
 function calculateAge(dob) {
@@ -35,6 +38,7 @@ function displayStudents(list = students) {
       <td>${student.father}</td>
       <td>${student.mother}</td>
       <td>${student.address}</td>
+      <td>${student.photo ? `<img src="${student.photo}" class="student-thumbnail" alt="${student.name}'s photo">` : '<span class="no-photo">-</span>'}</td>
       <td>
         <button onclick="editStudent(${index})" class="btn">Edit</button>
         <button onclick="deleteStudent(${index})" class="btn">Delete</button>
@@ -45,6 +49,20 @@ function displayStudents(list = students) {
   });
   updateFilters();
 }
+
+
+photoInput.addEventListener("change", () => {
+  const file = photoInput.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.addEventListener("load", () => {
+    selectedPhotoData = reader.result;
+    photoPreview.src = selectedPhotoData;
+    photoPreview.hidden = false;
+  });
+  reader.readAsDataURL(file);
+});
 
 
 form.addEventListener("submit", (e) => {
@@ -61,16 +79,23 @@ form.addEventListener("submit", (e) => {
     father: document.getElementById("father").value.trim(),
     mother: document.getElementById("mother").value.trim(),
     address: document.getElementById("address").value.trim(),
+    photo: selectedPhotoData,
   };
 
 
   const existingIndex = students.findIndex((s) => s.id === newStudent.id);
+  if (existingIndex >= 0 && !newStudent.photo) {
+    newStudent.photo = students[existingIndex].photo || "";
+  }
   if (existingIndex >= 0) students[existingIndex] = newStudent;
   else students.push(newStudent);
 
 
   localStorage.setItem("students", JSON.stringify(students));
   form.reset();
+  selectedPhotoData = "";
+  photoPreview.src = "";
+  photoPreview.hidden = true;
   displayStudents();
 });
 
@@ -78,7 +103,12 @@ form.addEventListener("submit", (e) => {
 function editStudent(index) {
   const s = students[index];
   for (let key in s) {
-    if (document.getElementById(key)) document.getElementById(key).value = s[key];
+    if (key !== "photo" && document.getElementById(key)) document.getElementById(key).value = s[key];
+  }
+  selectedPhotoData = s.photo || "";
+  if (selectedPhotoData) {
+    photoPreview.src = selectedPhotoData;
+    photoPreview.hidden = false;
   }
 }
 

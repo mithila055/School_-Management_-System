@@ -40,6 +40,13 @@
         <input type="text" id="father" placeholder="Father's Name" />
         <input type="text" id="mother" placeholder="Mother's Name" />
         <input type="text" id="address" placeholder="Address" />
+        <div class="photo-upload">
+          <label for="photo">Passport Photo</label>
+          <div class="photo-upload-row">
+            <input type="file" id="photo" accept="image/*" />
+            <img id="photoPreview" class="photo-preview" alt="Selected passport photo" hidden />
+          </div>
+        </div>
         <button type="submit" class="btn primary-action">Save Student</button>
       </form>
     </section>
@@ -102,6 +109,7 @@
             <th>Father</th>
             <th>Mother</th>
             <th>Address</th>
+            <th>Photo</th>
             <th>Action</th>
           </tr>
         </thead>
