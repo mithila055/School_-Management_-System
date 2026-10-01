@@ -7,15 +7,28 @@
   <link rel="stylesheet" href="dashboard.css" />
 </head>
 <body>
-  <header>
-    <h1>🏫 School Management Dashboard</h1>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <div>
+        <p class="eyebrow">Administration portal</p>
+        <h1>School Management Dashboard</h1>
+      </div>
+    </div>
+    <p class="today-label">Student records</p>
   </header>
 
 
-  <main>
-    <section class="student-form">
-      <h2>Add / Edit Student Information</h2>
-      <form id="studentForm">
+  <main class="dashboard-shell">
+    <section class="student-form panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Student directory</p>
+          <h2>Add / Edit Student Information</h2>
+        </div>
+        <span class="section-number">01</span>
+      </div>
+      <form id="studentForm" class="student-form-grid">
         <input type="text" id="studentId" placeholder="Student ID" required />
         <input type="text" id="name" placeholder="Full Name" required />
         <input type="text" id="class" placeholder="Class" required />
@@ -27,33 +40,54 @@
         <input type="text" id="father" placeholder="Father's Name" />
         <input type="text" id="mother" placeholder="Mother's Name" />
         <input type="text" id="address" placeholder="Address" />
-        <button type="submit" class="btn">Save Student</button>
+        <button type="submit" class="btn primary-action">Save Student</button>
       </form>
     </section>
 
 
-    <section class="filters">
-      <h2>Filter Students</h2>
-      <div class="filter-controls">
+    <div class="toolbar-row">
+      <section class="filters panel">
+        <div class="section-heading compact-heading">
+          <div>
+            <p class="eyebrow">Narrow results</p>
+            <h2>Filter Students</h2>
+          </div>
+          <span class="section-number">02</span>
+        </div>
+        <div class="filter-controls">
         <select id="classFilter">
           <option value="">All Classes</option>
         </select>
         <select id="sectionFilter">
           <option value="">All Sections</option>
         </select>
+        </div>
+      </section>
+
+
+      <section class="search-section panel">
+        <div class="section-heading compact-heading">
+          <div>
+            <p class="eyebrow">Quick lookup</p>
+            <h2>Search Student</h2>
+          </div>
+          <span class="search-icon" aria-hidden="true">⌕</span>
+        </div>
+        <input type="text" id="searchInput" placeholder="Search by Name or ID..." />
+      </section>
+    </div>
+
+
+    <section class="student-list panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Overview</p>
+          <h2>All Students</h2>
+        </div>
+        <span class="section-number">03</span>
       </div>
-    </section>
-
-
-    <section class="search-section">
-      <h2>Search Student</h2>
-      <input type="text" id="searchInput" placeholder="Search by Name or ID..." />
-    </section>
-
-
-    <section class="student-list">
-      <h2>All Students</h2>
-      <table>
+      <div class="table-wrap">
+        <table>
         <thead>
           <tr>
             <th>ID</th>
@@ -72,7 +106,8 @@
           </tr>
         </thead>
         <tbody id="studentTable"></tbody>
-      </table>
+        </table>
+      </div>
     </section>
   </main>
 
